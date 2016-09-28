@@ -17,12 +17,19 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0">
+            <CommandBar.Content>
+                <Grid>
+
+                    <TextBox  x:Name="findTextBox" HorizontalAlignment="Center"  
+                              VerticalAlignment="Center"  Margin="2,8"/>
+                </Grid>
+            </CommandBar.Content>
             <CommandBar.PrimaryCommands>
                 <AppBarButton Icon="Cancel"  Label="Закрыть" Tapped="CloseList"/>
             </CommandBar.PrimaryCommands>
         </CommandBar>
 
-        <ListView x:Name="ListAddr" Grid.Row="1" ItemsSource="{x:Bind Obj}" 
+        <ListView x:Name="ListAddr" Grid.Row="1" ItemsSource="{x:Bind Obj}" IsItemClickEnabled="True" ItemClick="ClickItem" 
                     SelectionChanged="ChengeClick">
             <ListView.ItemTemplate >
                 <DataTemplate x:DataType="data:Base">

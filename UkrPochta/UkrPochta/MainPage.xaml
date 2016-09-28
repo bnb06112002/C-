@@ -13,18 +13,16 @@
         <CommandBar>
             <CommandBar.Content>
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="350"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox Grid.Column="0" x:Name="comboBox" HorizontalAlignment="Center"  
-                              VerticalAlignment="Center" Width="170" Margin="2,8"/>
+                   
+                    <TextBox  x:Name="textBox" HorizontalAlignment="Stretch" Grid.Column="0"  
+                              VerticalAlignment="Center"  Margin="2,8,0,8" BorderBrush="Blue" BorderThickness="2"/>
                 </Grid>
             </CommandBar.Content>
             <AppBarButton Icon="Refresh"  Label="Обновить" Tapped="RefreshClick"/>
-            <AppBarButton Icon="Cancel" Label="Закрыть"/>
+            <AppBarButton Icon="Cancel" Label="Закрыть" Tapped="CloseClick"/>
         </CommandBar>
     </Page.TopAppBar>
     <Page.BottomAppBar>

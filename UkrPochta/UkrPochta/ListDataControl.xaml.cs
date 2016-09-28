@@ -71,11 +71,17 @@ namespace UkrPochta
 
         private void ChengeClick(object sender, SelectionChangedEventArgs e)
         {
-            Base item=null;
+          /*  Base item=null;
             if ((sender as ListView).Items.Count > 0&& e.AddedItems.Count>0)
                item = (Base)e.AddedItems[0];
-            OnSelectedChanged(item);           
+            OnSelectedChanged(item); */          
 
+        }
+
+        private void ClickItem(object sender, ItemClickEventArgs e)
+        {
+            Base item = (Base)e.ClickedItem;  
+            OnSelectedChanged(item);
         }
     }
 }

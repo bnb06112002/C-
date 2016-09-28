@@ -69,10 +69,7 @@ namespace UkrPochta
             if (db == null || db.IsEmpty)
                 StatusText.Text = "you must download the database";
             else
-            {
-                StatusText.Text = "ready";
-
-            }
+               StatusText.Text = "ready";
             ProgressStep.IsActive = false;
 
             regions = db.GetRegion();
@@ -85,8 +82,7 @@ namespace UkrPochta
 
         private  async Task CheckDB()
         {
-            var x = await LocalFolder.TryGetItemAsync(DbName);
-           
+            var x = await LocalFolder.TryGetItemAsync(DbName);          
             if (x == null)
             {
                 StatusText.Text = "UnPacked db file";
@@ -100,8 +96,7 @@ namespace UkrPochta
                 }
             }
             else
-            db = new DB(x.Path);
-          
+            db = new DB(x.Path);          
         }
 
         protected override  void OnNavigatedTo(NavigationEventArgs e)
@@ -109,10 +104,7 @@ namespace UkrPochta
             
 
         }
-
-       
-
-        
+                  
         
 
         private async void MapsGoTo(string name)
@@ -186,7 +178,6 @@ namespace UkrPochta
                 MapsGoTo(_adrr.ChooseAdrr);
             }
         }
-
         private void FillDependedObject(object tag,Base obj)
         {
             if (obj != null)
@@ -220,7 +211,6 @@ namespace UkrPochta
                 
             
         }
-
         private void VChenged(object sender, bool visible)
         {
             var control = (ListDataControl)sender;
@@ -281,16 +271,18 @@ namespace UkrPochta
 
                 
 
-        }
-
-       
-
+        }             
         private void ClickFind(object sender, ItemClickEventArgs e)
         {
             var mp = (MapLocation)e.ClickedItem;
             Mapa.Center = mp.Point;
             Mapa.ZoomLevel = 12;
 
+        }
+
+        private void CloseClick(object sender, TappedRoutedEventArgs e)
+        {
+            Application.Current.Exit();
         }
     }
 }
