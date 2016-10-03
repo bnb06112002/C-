@@ -124,10 +124,13 @@ namespace UkrPochta.Data.Service
 
         private bool AcceptData(IProgress<string> loggedText)
         {
-            try
-            {
+           
                 _context.Db.BeginTransaction();
                 _context.Db.Execute("delete from tbl_region");
+                _context.Db.Execute("delete from tbl_district");
+                _context.Db.Execute("delete from tbl_city");
+                _context.Db.Execute("delete from tbl_street");
+                _context.Db.Execute("delete from tbl_house");
                 string _updRegion = "insert into tbl_region(name) select distinct region from tbl_data";
                 string _updDistrict = "insert into tbl_district(regionid,name) " +
                                       "select distinct r.id,d.district from tbl_data d " +
@@ -152,11 +155,8 @@ namespace UkrPochta.Data.Service
                 _context.Db.Commit();
                 
                 return true;
-            }
-            catch
-            {
-                return false;
-            }
+            
+           
         }
 
         private async Task<bool> CsvDataImport(string path, IProgress<string> loggedText)
@@ -181,12 +181,7 @@ namespace UkrPochta.Data.Service
                 var cmd = _context.Db.CreateCommand(insStr);
                 cmd.ExecuteNonQuery();
                 loggedText.Report("added " + numLines + " of " + lines.Count());
-                /* if (numLines==100)
-                 {
-                     _context.Db.Commit();
-                     numLines = 2;
-                     _context.Db.BeginTransaction();
-                 }*/
+                
             }
             _context.Db.Commit();
             var x = await Task.Run(() => AcceptData(loggedText));

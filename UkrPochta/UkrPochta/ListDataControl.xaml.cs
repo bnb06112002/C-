@@ -62,21 +62,10 @@ namespace UkrPochta
         }
 
         private void CloseList(object sender, TappedRoutedEventArgs e)
-        {
-            var index = ListAddr.SelectedIndex;            
-            ListAddr.ItemsSource = null;
-            if (index==-1)
-                OnSelectedChanged(null);            
+        {                    
+            Obj = null;                               
         }
 
-        private void ChengeClick(object sender, SelectionChangedEventArgs e)
-        {
-          /*  Base item=null;
-            if ((sender as ListView).Items.Count > 0&& e.AddedItems.Count>0)
-               item = (Base)e.AddedItems[0];
-            OnSelectedChanged(item); */          
-
-        }
 
         private void ClickItem(object sender, ItemClickEventArgs e)
         {

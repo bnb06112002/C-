@@ -16,21 +16,26 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <CommandBar Grid.Row="0">
+        <CommandBar Grid.Row="0" Background="CornflowerBlue">
             <CommandBar.Content>
-                <Grid>
-
-                    <TextBox  x:Name="findTextBox" HorizontalAlignment="Center"  
-                              VerticalAlignment="Center"  Margin="2,8"/>
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="45" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button HorizontalAlignment="Right" Grid.Column="0" Content="&#xe251;" FontFamily="Segoe UI Symbol" FontSize="20"/>
+                    <TextBlock Grid.Column="1" Margin="5,2,5,2"  TextWrapping="WrapWholeWords"  HorizontalAlignment="Left" Text="Справочник: Области"/>
                 </Grid>
+                
             </CommandBar.Content>
             <CommandBar.PrimaryCommands>
-                <AppBarButton Icon="Cancel"  Label="Закрыть" Tapped="CloseList"/>
+                <AppBarButton Icon="Cancel"  Label="Закрыть" Tapped="CloseList" />
+                
             </CommandBar.PrimaryCommands>
         </CommandBar>
 
         <ListView x:Name="ListAddr" Grid.Row="1" ItemsSource="{x:Bind Obj}" IsItemClickEnabled="True" ItemClick="ClickItem" 
-                    SelectionChanged="ChengeClick">
+                    >
             <ListView.ItemTemplate >
                 <DataTemplate x:DataType="data:Base">
                     <StackPanel Orientation="Horizontal">
