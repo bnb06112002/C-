@@ -81,10 +81,10 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             
-            <local:ListDataControl x:Name="ListRgn"  Width="350"  Grid.Row="0" VisibleChanged="VChenged" SelectChanged="Changed"  Tag="{Binding ElementName=ListDistr}"/>
-            <local:ListDataControl x:Name="ListDistr" x:DeferLoadStrategy="Lazy"  Width="350" Grid.Row="1" Visibility="Collapsed" SelectChanged="Changed" VisibleChanged="VChenged" Tag="{Binding ElementName=ListCity}"/>
-            <local:ListDataControl x:Name="ListCity" x:DeferLoadStrategy="Lazy"  Width="350" Grid.Row="2" Visibility="Collapsed" SelectChanged="Changed" VisibleChanged="VChenged" Tag="{Binding ElementName=ListStreet}"/>
-            <local:ListDataControl x:Name="ListStreet" x:DeferLoadStrategy="Lazy"  Width="350" Grid.Row="3" Visibility="Collapsed" SelectChanged="Changed" VisibleChanged="VChenged"/>
+            <local:ListDataControl x:Name="ListRgn"  Width="350"  Grid.Row="0" ExpandChanged="ExpandChanged" VisibleChanged="VChenged" SelectChanged="Changed"  Tag="{Binding ElementName=ListDistr}"/>
+            <local:ListDataControl x:Name="ListDistr" x:DeferLoadStrategy="Lazy"  Width="350" Grid.Row="1" Visibility="Collapsed" ExpandChanged="ExpandChanged" SelectChanged="Changed" VisibleChanged="VChenged" Tag="{Binding ElementName=ListCity}"/>
+            <local:ListDataControl x:Name="ListCity" x:DeferLoadStrategy="Lazy"  Width="350" Grid.Row="2" Visibility="Collapsed" ExpandChanged="ExpandChanged" SelectChanged="Changed" VisibleChanged="VChenged" Tag="{Binding ElementName=ListStreet}"/>
+            <local:ListDataControl x:Name="ListStreet" x:DeferLoadStrategy="Lazy"  Width="350" Grid.Row="3" Visibility="Collapsed" ExpandChanged="ExpandChanged" SelectChanged="Changed" VisibleChanged="VChenged"/>
         </Grid>
     </Grid>
 </Page>

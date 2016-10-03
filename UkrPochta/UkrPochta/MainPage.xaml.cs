@@ -74,7 +74,7 @@ namespace UkrPochta
 
             regions = db.GetRegion();
             ListRgn.Obj = regions;
-            ListRgn.TypeObj = new Region().GetType();
+          //  ListRgn.TypeObj = new Region().GetType();
 
         }
 
@@ -220,12 +220,14 @@ namespace UkrPochta
                 {
                     if(el is ListDataControl)
                     {
-                        if ((el as ListDataControl).Equals(control) && control.Tag != null)
+                       
+                        if (control.Tag != null)
                         {
                             (el as ListDataControl).Height = 72;
-                            var row=Grid.GetRow((FrameworkElement)el);
-                            var cr=grdList.RowDefinitions;
+                            var row = Grid.GetRow((FrameworkElement)el);
+                            var cr = grdList.RowDefinitions;
                             cr[row].Height = GridLength.Auto;
+                            (control.Tag as ListDataControl).Height = double.NaN;
                             row = Grid.GetRow((FrameworkElement)control.Tag);
                             cr[row].Height= new GridLength(1, GridUnitType.Star);
 
@@ -283,6 +285,57 @@ namespace UkrPochta
         private void CloseClick(object sender, TappedRoutedEventArgs e)
         {
             Application.Current.Exit();
+        }
+
+        private void ExpandChanged(object sender, bool expand)
+        {
+            var control = (ListDataControl)sender;
+            
+            if (expand)
+            {
+
+                foreach (UIElement el in grdList.Children)
+                {
+                    if (el is ListDataControl)
+                    {
+                        var row = Grid.GetRow((FrameworkElement)el);
+                        var cr = grdList.RowDefinitions;
+                        if (el.Equals(control))
+                        {
+                            (el as ListDataControl).Height = double.NaN;
+                            cr[row].Height = new GridLength(1, GridUnitType.Star);
+
+                        }
+                        else
+                        {
+                            (el as ListDataControl).Height = 72;
+                            cr[row].Height = GridLength.Auto;
+                            (el as ListDataControl).IsExpand = false;
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                var row = Grid.GetRow((FrameworkElement)control);
+                var cr = grdList.RowDefinitions;
+                control.Height = 72;
+                cr[row].Height = GridLength.Auto;
+                foreach (UIElement el in grdList.Children)
+                {
+                    if (el is ListDataControl&&control.Tag!=null&&control.Tag.Equals(el))
+                    {
+                       
+                         row = Grid.GetRow((FrameworkElement)el);
+                         (el as ListDataControl).Height = double.NaN;
+                         cr[row].Height = new GridLength(1, GridUnitType.Star);
+                        (el as ListDataControl).IsExpand = true;
+
+
+                    }
+                }
+           }
         }
     }
 }

@@ -23,8 +23,8 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Button HorizontalAlignment="Right" Grid.Column="0" Content="&#xe251;" FontFamily="Segoe UI Symbol" FontSize="20"/>
-                    <TextBlock Grid.Column="1" Margin="5,2,5,2"  TextWrapping="WrapWholeWords"  HorizontalAlignment="Left" Text="Справочник: Области"/>
+                    <Button HorizontalAlignment="Right" Grid.Column="0" Content="&#xe251;" FontFamily="Segoe UI Symbol" FontSize="20" Tapped="ExpandList"/>
+                    <TextBlock x:Name="TxtDict" Grid.Column="1" Margin="5,2,5,2"  TextWrapping="WrapWholeWords"  HorizontalAlignment="Left" Text="Справочник: Области"/>
                 </Grid>
                 
             </CommandBar.Content>
